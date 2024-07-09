@@ -25,11 +25,10 @@ const App = () => {
     <TodoContext.Provider value={todos}>
       <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
         <h2 className="text-xl font-semibold mb-4">Thêm công việc</h2>
-        <TodoAdd setTodos={setTodos} todos={todos} />
+        <TodoAdd setTodos={setTodos} />
         <hr className="my-6" />
         <h2 className="text-xl font-semibold mb-4">Danh sách công việc</h2>
-        <TodoList todos={todos} setTodos={setTodos}
-        />
+        <TodoList setTodos={setTodos} />
       </div>
     </TodoContext.Provider>
   );

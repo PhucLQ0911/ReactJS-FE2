@@ -5,7 +5,6 @@ import { ITodo } from "../interfaces/ITodo";
 import { TodoContext } from "../App";
 
 interface TodoAddProps {
-    todos: ITodo[];
     setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
 }
 

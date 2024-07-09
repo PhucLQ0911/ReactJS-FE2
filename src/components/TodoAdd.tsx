@@ -5,10 +5,8 @@ import { useContext } from "react";
 import { TodoContext } from "../App";
 
 interface TodoAddProps {
-    todos: ITodo[];
     setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
 }
-
 
 const TodoAdd: React.FC<TodoAddProps> = ({ setTodos }) => {
     const { register, handleSubmit, reset } = useForm();
@@ -17,7 +15,6 @@ const TodoAdd: React.FC<TodoAddProps> = ({ setTodos }) => {
 
     const onSubmit = async (data: any) => {
         const newTodo = { ...data, completed: false };
-        //reset form
         try {
             const response = await fetch(`http://localhost:3000/todos`, {
                 method: "POST",
