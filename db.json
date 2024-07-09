@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "id": "2",
+      "name": "Product 2",
+      "price": 200
+    },
+    {
+      "id": "3",
+      "name": "Product 3",
+      "price": 300
+    },
+    {
+      "id": "4",
+      "name": "Product 4",
+      "price": 400
+    }
+  ],
+  "todos": [
+    {
+      "title": "todo 5",
+      "completed": false,
+      "id": "7"
+    },
+    {
+      "title": "Todo 6",
+      "completed": false,
+      "id": "8"
+    },
+    {
+      "title": "Todo 9",
+      "completed": false,
+      "id": "9"
+    },
+    {
+      "id": "5b60",
+      "title2": "12312369",
+      "title": "3333",
+      "completed": false
+    }
+  ]
+}

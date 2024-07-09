@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useEffect, useState } from "react";
+import TodoAdd from "./components/TodoAdd";
+import TodoList from "./components/TodoList";
+import { ITodo } from "./interfaces/ITodo";
+
+const App = () => {
+  const [todos, setTodos] = useState<ITodo[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/todos`);
+        const data = await response.json();
+        setTodos(data);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
+      <h2 className="text-xl font-semibold mb-4">Thêm công việc</h2>
+      <TodoAdd setTodos={setTodos} todos={todos} />
 
-export default App
+      <hr className="my-6" />
+      <h2 className="text-xl font-semibold mb-4">Danh sách công việc</h2>
+
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
+      />
+    </div>
+  );
+};
+
+export default App;
