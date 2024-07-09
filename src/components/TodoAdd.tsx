@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form";
 import { ITodo } from "../interfaces/ITodo";
+import { useContext } from "react";
+import { TodoContext } from "../App";
 
 interface TodoAddProps {
     todos: ITodo[];
@@ -8,8 +10,10 @@ interface TodoAddProps {
 }
 
 
-const TodoAdd: React.FC<TodoAddProps> = ({ todos, setTodos }) => {
+const TodoAdd: React.FC<TodoAddProps> = ({ setTodos }) => {
     const { register, handleSubmit, reset } = useForm();
+
+    const todos = useContext(TodoContext);
 
     const onSubmit = async (data: any) => {
         const newTodo = { ...data, completed: false };

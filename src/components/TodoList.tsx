@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ITodo } from "../interfaces/ITodo";
+import { TodoContext } from "../App";
 
 interface TodoAddProps {
     todos: ITodo[];
     setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
 }
 
-
-const TodoList: React.FC<TodoAddProps> = ({ todos, setTodos }) => {
+const TodoList: React.FC<TodoAddProps> = ({ setTodos }) => {
     const { register, handleSubmit, reset } = useForm();
     const [editTodoId, setEditTodoId] = useState<number | null>(null);
+    const todos = useContext(TodoContext)
 
     const onHandleRemove = async (id: number) => {
         try {
